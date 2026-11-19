@@ -4,9 +4,18 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, DevOps World!\n');
+
+  if (req.url === '/login') {
+    res.statusCode = 200;
+    res.end('Login Page\n');
+  } else if (req.url === '/register') {
+    res.statusCode = 200;
+    res.end('Register Page\n');
+  } else {
+    res.statusCode = 200;
+    res.end('Hello,  World!\n');
+  }
 });
 
 server.listen(port, hostname, () => {
